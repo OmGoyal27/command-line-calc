@@ -1,3 +1,5 @@
+import sys
+
 def add(num1: float, num2: float) -> float:
     return num1 + num2
 
@@ -84,7 +86,6 @@ def addToHistory(display: str) -> None:
     """Append the display string to history.txt"""
     with open("history.txt", "a") as file:
         file.write(display + "\n")
-    print("Calculation added to history.")
 
 def get_history() -> list[str]:
     """Read the history from history.txt and return as a list"""
@@ -94,12 +95,34 @@ def get_history() -> list[str]:
     except FileNotFoundError:
         return []
 
-def main():
-    print("=== Advanced Command Line Calculator ===")
-    print("Supported operations: + - * / ^ % sqrt")
-    print("Examples: 5 + 3, 10 / 2, 2 ^ 3, sqrt 16")
-    print("Type 'exit' or leave blank to quit, 'history' to see past calculations")
+def prod():
+    """Run the calculator in production mode with command line arguments"""
+    if len(sys.argv) < 2:
+        print("Usage: python main.py <equation>")
+        return
     
+    user_input = sys.argv[1]
+    num1, num2, operation = parse_input(user_input)
+    
+    if operation == "error":
+        print(f"Error: {num1}")
+        return
+    
+    result = calculate(num1, num2, operation)
+    
+    if operation == "sqrt":
+        display = f"sqrt({num1}) = {result}"
+    else:
+        display = f"{num1} {operation} {num2} = {result}"
+    
+    print(result)
+    addToHistory(display)
+
+def main():
+    if len(sys.argv) > 1:
+        prod()
+        return
+
     while True:
         user_input = input("\nEnter calculation: ")
         
