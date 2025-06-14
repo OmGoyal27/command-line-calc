@@ -102,6 +102,16 @@ def prod():
         return
     
     user_input = sys.argv[1]
+    if user_input.lower() == 'history':
+        history = get_history()
+        if not history:
+            print("No calculations in history")
+            return
+        print("\n=== Calculation History ===")
+        for i, calc in enumerate(history, 1):
+            print(f"{i}. {calc.strip()}")
+        return
+
     num1, num2, operation = parse_input(user_input)
     
     if operation == "error":
