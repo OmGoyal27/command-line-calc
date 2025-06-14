@@ -4,8 +4,8 @@ This is a simple project to have a calculator, directly in your command line.
 
 # Demo
 
-<video width="320" height="240" controls>
-  <source src="docs/demo.mkv" type="video/mp4" >
+<video width="800" controls>
+  <source src="docs/demo.mp4" type="video/mp4" >
 </video>
 
 # Future features
