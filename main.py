@@ -80,13 +80,25 @@ def parse_input(user_input: str) -> tuple[float | str, float | str | None, str]:
     except ValueError:
         return "Invalid numbers", None, "error"
 
+def addToHistory(display: str) -> None:
+    """Append the display string to history.txt"""
+    with open("history.txt", "a") as file:
+        file.write(display + "\n")
+    print("Calculation added to history.")
+
+def get_history() -> list[str]:
+    """Read the history from history.txt and return as a list"""
+    try:
+        with open("history.txt", "r") as file:
+            return file.readlines()
+    except FileNotFoundError:
+        return []
+
 def main():
     print("=== Advanced Command Line Calculator ===")
     print("Supported operations: + - * / ^ % sqrt")
     print("Examples: 5 + 3, 10 / 2, 2 ^ 3, sqrt 16")
     print("Type 'exit' to quit, 'history' to see past calculations")
-    
-    history = []
     
     while True:
         user_input = input("\nEnter calculation: ")
@@ -96,11 +108,11 @@ def main():
             break
         
         if user_input.lower() == 'history':
-            if not history:
+            if not get_history():
                 print("No calculations in history")
             else:
                 print("\n=== Calculation History ===")
-                for i, calc in enumerate(history, 1):
+                for i, calc in enumerate(get_history(), 1):
                     print(f"{i}. {calc}")
             continue
         
@@ -118,7 +130,7 @@ def main():
             display = f"{num1} {operation} {num2} = {result}"
             
         print(result)
-        history.append(display)
+        addToHistory(display)
 
 if __name__ == "__main__":
     main()
