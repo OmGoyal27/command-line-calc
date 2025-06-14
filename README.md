@@ -6,7 +6,7 @@ This is a simple project to have a calculator, directly in your command line.
 
 - [x] Have it do basic math equations.
 
-- [ ] Make it run via typing =calc (equation)
+- [x] Make it run via typing =calc (equation)
 
 - [x] Make it square up a number by typing x^y (x raised to the power of y)
 
