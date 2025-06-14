@@ -8,4 +8,4 @@ if (-not $equation) {
     exit 1
 }
 
-python "D:\Command line calculator\main.py" $equation
+python "main.py" $equation
