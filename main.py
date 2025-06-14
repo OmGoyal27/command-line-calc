@@ -98,12 +98,12 @@ def main():
     print("=== Advanced Command Line Calculator ===")
     print("Supported operations: + - * / ^ % sqrt")
     print("Examples: 5 + 3, 10 / 2, 2 ^ 3, sqrt 16")
-    print("Type 'exit' to quit, 'history' to see past calculations")
+    print("Type 'exit' or leave blank to quit, 'history' to see past calculations")
     
     while True:
         user_input = input("\nEnter calculation: ")
         
-        if user_input.lower() == 'exit':
+        if user_input.lower() == 'exit' or not user_input:
             print("Thank you for using the calculator!")
             break
         
