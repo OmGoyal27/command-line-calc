@@ -97,7 +97,7 @@ def get_history() -> list[str]:
 
 def prod():
     """Run the calculator in production mode with command line arguments"""
-    if len(sys.argv) < 2:
+    if not len(sys.argv) == 2:
         print("Usage: python main.py <equation>")
         return
     
